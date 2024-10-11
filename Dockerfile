@@ -4,7 +4,11 @@ USER root
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list \
+RUN sed -i 's@//.*archive.ubuntu.com@//mirrors.ustc.edu.cn@g' /etc/apt/sources.list.d/ubuntu.sources \
+    && sed -i 's/security.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list.d/ubuntu.sources \
+    && mv /etc/apt/sources.list.d/ubuntu.sources /tmp/ \
+    && rm /etc/apt/sources.list.d/* \
+    && mv /tmp/ubuntu.sources /etc/apt/sources.list.d/ \
     && apt update \
     && apt install -y \
         language-pack-zh-hans \

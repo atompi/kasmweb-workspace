@@ -1,3 +1,13 @@
+## Build
+
+```
+docker build -t atompi/ubuntu-noble-desktop:1.16.0 .
+cat atompi.cc-key.pem atompi.cc.pem > self.pem
+docker compose up -d
+```
+
+## Usage
+
 ```
 pandoc --toc --from markdown --pdf-engine=xelatex -V mainfont='WenQuanYi Micro Hei' -V CJKmainfont='WenQuanYi Micro Hei' --template=../templates/eisvogel --listings -s example.md -o example.pdf
 
