@@ -6,7 +6,6 @@ services:
     restart: always
     shm_size: 512M
     volumes:
-      - ./self.pem:/home/kasm-user/.vnc/self.pem:ro
       - app_data:/data
     environment:
       VNC_PW: ${VNC_PW}

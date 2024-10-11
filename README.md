@@ -2,8 +2,11 @@
 
 ```
 docker build -t atompi/ubuntu-noble-desktop:1.16.0 .
-cat atompi.cc-key.pem atompi.cc.pem > self.pem
 docker compose up -d
+
+cat atompi.cc-key.pem atompi.cc.pem > data/self.pem
+docker compose exec kasmweb bash
+cp /data/self.pem .vnc/self.pem
 ```
 
 ## Usage
