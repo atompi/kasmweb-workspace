@@ -1,0 +1,29 @@
+name: 'kasmweb'
+
+services:
+  kasmweb:
+    image: atompi/ubuntu-noble-desktop:1.16.0
+    restart: always
+    shm_size: 512M
+    volumes:
+      - app_data:/data
+    environment:
+      VNC_PW: ${VNC_PW}
+      LANG: zh_CN.UTF-8
+      LANGUAGE: zh_CN.UTF-8
+      LC_ALL: zh_CN.UTF-8
+    ports:
+      - "6901:6901"
+
+volumes:
+  app_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: $PWD/data
+
+networks:
+  default:
+    external: true
+    name: compose
