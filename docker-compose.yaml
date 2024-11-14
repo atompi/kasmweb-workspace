@@ -7,6 +7,7 @@ services:
     shm_size: 512M
     volumes:
       - app_data:/data
+      - ./kasmvnc.yaml:/etc/kasmvnc/kasmvnc.yaml
     environment:
       VNC_PW: ${VNC_PW}
       LANG: zh_CN.UTF-8
